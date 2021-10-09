@@ -26,6 +26,11 @@ namespace WpfApp4.pages
             listGenders.ItemsSource = BaseConnect.BaseModel.genders.ToList();//выбор источника данных 
             listGenders.SelectedValuePath = "id";//индексы пунктов списка
             listGenders.DisplayMemberPath = "gender";//то, что отображается для пользователя
+        
+            lbTarits.ItemsSource = BaseConnect.BaseModel.traits.ToList();
+            lbTarits.SelectedValuePath = "id";
+            lbTarits.DisplayMemberPath = "trait";
+        
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

@@ -29,10 +29,10 @@ namespace WpfApp4.pages
         {
             try
             {
-                BaseConnect.CurrentUser = BaseConnect.BaseModel.auth.FirstOrDefault(x => x.login == txtLogin.Text && x.password == txtPassword.Password);
-                if (BaseConnect.CurrentUser != null)
+                auth CurrentUser = BaseConnect.BaseModel.auth.FirstOrDefault(x => x.login == txtLogin.Text && x.password == txtPassword.Password);
+                if (CurrentUser != null)
                 {//сюда напишем алгоритм перехода на страницу в зависимости от роли
-                    switch (BaseConnect.CurrentUser.role)
+                    switch (CurrentUser.role)
                     {
                         case 1:
                             MessageBox.Show("Вы вошли как администратор");
@@ -41,7 +41,7 @@ namespace WpfApp4.pages
                         case 2:
                         default:
                             MessageBox.Show("Вы вошли как обычный пользователь");
-                            LoadPages.MainFrame.Navigate(new info());
+                            LoadPages.MainFrame.Navigate(new info(CurrentUser));
                         break;
                             
                     }

@@ -9,20 +9,28 @@
       Title="adminMenu">
 
     <Grid>
-        <StackPanel>
-            <DataGrid x:Name="dgUsers" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Логин" Binding="{Binding login}"/>
-                    <DataGridTextColumn Header="Пароль" Binding="{Binding password}"/>
-                    <DataGridTextColumn Header="Роль ID" Binding="{Binding role}"/>
-                    <DataGridTextColumn Header="Роль" Binding="{Binding roles.role}"/>
-                    <DataGridTextColumn Header="Имя" Binding="{Binding users.name}"/>
-                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding users.dr}"/>
-                    <DataGridTextColumn Header="Пол" Binding="{Binding users.genders.gender}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button x:Name="btnSaveCahanges" Content="Сохранить изменения"  Click="btnSaveCahanges_Click"/>
-        </StackPanel>       
-        
+        <ScrollViewer>
+            <StackPanel>
+            
+                <DataGrid x:Name="dgUsers" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Логин" Binding="{Binding login}"/>
+                        <DataGridTextColumn Header="Пароль" Binding="{Binding password}"/>
+                        <DataGridTextColumn Header="Роль ID" Binding="{Binding role}"/>
+                        <DataGridTextColumn Header="Роль" Binding="{Binding roles.role}"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding users.name}"/>
+                        <DataGridTextColumn Header="Дата рождения" Binding="{Binding users.dr}"/>
+                        <DataGridTextColumn Header="Пол" Binding="{Binding users.genders.gender}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="btnSaveCahanges" Content="Сохранить изменения"  Click="btnSaveCahanges_Click"/>
+                <TextBlock Text="Удаление пользователя из таблицы:"/>
+                <Button Name="btnDeleteUser" Content="Удалить выбранного пользователя" Click="btnDeleteUser_Click"/>
+                <Button Name="btnEditUser" Content="Редактировать выбранного пользователя" Click="btnEditUser_Click"/>
+                
+                <Button Name="btnBack" Content="назад" IsCancel="True" Click="btnBack_Click"/>
+           
+        </StackPanel>
+            </ScrollViewer>
     </Grid>
 </Page>

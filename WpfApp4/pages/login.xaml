@@ -17,7 +17,8 @@
                 <GroupBox Header="введите пароль">
                     <PasswordBox x:Name="txtPassword"/>
                 </GroupBox>
-                <Button Content="Авторизоваться" Name="btnLogin" Click="btnLogin_Click"/>
+                <Button Content="Авторизоваться" Name="btnLogin" Click="btnLogin_Click" IsDefault="True"/>
+                <!--Свойство IsDefault активирует кнопку при нажатии enter, IsCancel - при нажатии Escape-->
                 <Button Content="Зарегистрироваться" Name="btnReg" Click="btnReg_Click"/>
                 
             </StackPanel>

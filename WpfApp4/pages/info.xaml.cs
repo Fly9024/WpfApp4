@@ -22,14 +22,18 @@ namespace WpfApp4.pages
     {
         public info()
         {
+            InitializeComponent();          
+        }   
+         public info(auth CurrentUser)
+        {
             InitializeComponent();
            try
             {
-                tbName.Text = BaseConnect.CurrentUser.users.name;
-                tbDR.Text = BaseConnect.CurrentUser.users.dr.ToString("yyyy MMMM dd");
-                tbGender.Text = BaseConnect.CurrentUser.users.genders.gender;
+                tbName.Text = CurrentUser.users.name;
+                tbDR.Text = CurrentUser.users.dr.ToString("yyyy MMMM dd");
+                tbGender.Text = CurrentUser.users.genders.gender;
                 //список из качеств личности авторизованного пользователя
-                List<users_to_traits> LUTT = BaseConnect.BaseModel.users_to_traits.Where(x => x.id_user == BaseConnect.CurrentUser.id).ToList();
+                List<users_to_traits> LUTT = BaseConnect.BaseModel.users_to_traits.Where(x => x.id_user == CurrentUser.id).ToList();
                 foreach (users_to_traits UT in LUTT)
                 {
                     tbTraits.Text += UT.traits.trait + "; ";
@@ -38,8 +42,7 @@ namespace WpfApp4.pages
             catch
             {
                 MessageBox.Show("информации о вас нет в системе");
-            }
-           
+            }           
         }   
 
 

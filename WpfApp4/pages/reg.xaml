@@ -13,6 +13,13 @@
                 <TextBlock Foreground="Aqua" Text="записать"/>
             </Border>
         </ControlTemplate>
+        <ControlTemplate TargetType="ListBox" x:Key="CTlb1">
+            <ContentControl>
+                
+            </ContentControl>
+        </ControlTemplate>
+        
+        
     </Page.Resources>
     <Grid>
         <ScrollViewer>
@@ -35,6 +42,19 @@
                     </GroupBox>
                     <GroupBox Header="Введите качества личности">
                         <StackPanel>
+                        <ListBox Name="lbTarits">
+                            <!--<ListBoxItem>
+                                <CheckBox Name="cb1"/>
+                            </ListBoxItem>
+                             <ListBoxItem>
+                                <CheckBox Name="cb2"/>
+                            </ListBoxItem>
+                             <ListBoxItem>
+                                <CheckBox Name="cb3"/>
+                            </ListBoxItem>-->
+                            
+                        </ListBox>
+                        
                             <CheckBox Content="добрый" Name="cb1"/>
                             <CheckBox Content="нежный" Name="cb2"/>
                             <CheckBox Content="ласковый" Name="cb3"/>

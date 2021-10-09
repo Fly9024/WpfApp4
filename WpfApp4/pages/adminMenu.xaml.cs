@@ -24,11 +24,31 @@ namespace WpfApp4.pages
         {
             InitializeComponent();
             dgUsers.ItemsSource = BaseConnect.BaseModel.auth.ToList();
+
         }
 
         private void btnSaveCahanges_Click(object sender, RoutedEventArgs e)
         {
            BaseConnect.BaseModel.SaveChanges();
+        }
+
+        private void btnDeleteUser_Click(object sender, RoutedEventArgs e)
+        {
+            auth SelectedUser = (auth)dgUsers.SelectedItem;//сохраняем выбранную строку datagrid в отдельный объект
+            BaseConnect.BaseModel.auth.Remove(SelectedUser);//удаляем эту строку из модели
+            BaseConnect.BaseModel.SaveChanges();//синхронизируем изменения с сервером
+            MessageBox.Show("Выбранный пользователь удален");//обратная связь с оператором программы
+            dgUsers.ItemsSource = BaseConnect.BaseModel.auth.ToList();//обновить строки в datagrid
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPages.MainFrame.GoBack();
+        }
+
+        private void btnEditUser_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
