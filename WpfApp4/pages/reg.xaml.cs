@@ -29,7 +29,7 @@ namespace WpfApp4.pages
         
             lbTarits.ItemsSource = BaseConnect.BaseModel.traits.ToList();
             lbTarits.SelectedValuePath = "id";
-            lbTarits.DisplayMemberPath = "trait";
+         //   lbTarits.DisplayMemberPath = "trait";// не работает одновременно с itemtemplate
         
         }
 
@@ -49,32 +49,15 @@ namespace WpfApp4.pages
             users User = new users() { name = txtName.Text, id = logPass.id, gender = (int)listGenders.SelectedValue, dr = (DateTime)dtDr.SelectedDate };
             BaseConnect.BaseModel.users.Add(User);
             
-            if (cb1.IsChecked==true)
-            {
+            
+            foreach(traits t in lbTarits.SelectedItems)
+            {                
                 users_to_traits UTT = new users_to_traits();
                 UTT.id_user = User.id;
-                UTT.id_trait = 1;
+                UTT.id_trait = t.id;
                 BaseConnect.BaseModel.users_to_traits.Add(UTT);
-            }
-            if (cb2.IsChecked==true)
-            {
-                users_to_traits UTT = new users_to_traits();
-                UTT.id_user = User.id;
-                UTT.id_trait = 2;
-                BaseConnect.BaseModel.users_to_traits.Add(UTT);
-            }
-            if (cb3.IsChecked==true)
-            {
-                users_to_traits UTT = new users_to_traits();
-                UTT.id_user = User.id;
-                UTT.id_trait = 3;
-                BaseConnect.BaseModel.users_to_traits.Add(UTT);
-            }
+            }                     
             BaseConnect.BaseModel.SaveChanges();
-
-
-
-
             MessageBox.Show("Данные записаны успешно");//обратная связь с пользователем
         }
     }
