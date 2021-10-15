@@ -36,7 +36,7 @@ namespace WpfApp4.pages
                     {
                         case 1:
                             MessageBox.Show("Вы вошли как администратор");
-                            LoadPages.MainFrame.Navigate(new adminMenu());
+                            LoadPages.MainFrame.Navigate(new PageUsersLisl());
                             break;
                         case 2:
                         default:

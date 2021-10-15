@@ -1,0 +1,50 @@
+﻿<Page x:Class="WpfApp4.pages.PageUsersLisl"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp4.pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageUsersLisl">
+    <Page.Resources>
+        <DataTemplate x:Key="DT1">
+            <!--Шаблон для вывода информации о пользователе-->
+            <StackPanel>
+                <GroupBox Header="имя">
+                    <TextBlock Text="{Binding name}"/>
+                </GroupBox>
+                <GroupBox Header=" дата рождения">
+                    <TextBlock Text="{Binding dr, StringFormat={}{0:dd.MM.yyyy}}"/>
+                    <!--указание формата вывода даты-->
+                </GroupBox>
+                <GroupBox Header=" пол">
+                    <TextBlock Text="{Binding genders.gender}"/>
+                    <!--переход к сущности genders, т.к. в users содержится только id пола-->
+                </GroupBox>
+                <GroupBox Header="качества личности">
+                    <!--тут будет вложенный список, т.к. связи многие ко многим-->
+                    <ListBox Name="lbTraits" Loaded="lbTraits_Loaded" Uid="{Binding id}"/>
+                    <!--loaded - событие, которое происходит при создании элемента списка из шаблона-->
+                </GroupBox>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="397*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"  Orientation="Horizontal">
+            <GroupBox Header="от">
+                <TextBox Name="txtOT" Width="50"/>
+            </GroupBox>
+            <GroupBox Header="до">
+                <TextBox Name="txtDO" Width="50"/>
+            </GroupBox>
+            <Button Name="btnGo" Content="Вывести" Click="btnGo_Click" Width="50" Margin="5"/>
+            <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
+        </StackPanel>
+        <ListBox Name="lbUsersList" ItemTemplate="{StaticResource DT1}" Grid.Row="1"/>
+    </Grid>
+</Page>

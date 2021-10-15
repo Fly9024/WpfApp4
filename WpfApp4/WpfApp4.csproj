@@ -79,6 +79,9 @@
     <Compile Include="pages\adminMenu.xaml.cs">
       <DependentUpon>adminMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pages\PageUsersLisl.xaml.cs">
+      <DependentUpon>PageUsersLisl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="roles.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pages\login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pages\PageUsersLisl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
