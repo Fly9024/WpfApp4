@@ -26,6 +26,10 @@ namespace WpfApp4.pages
             InitializeComponent();
             users = BaseConnect.BaseModel.users.ToList();
             lbUsersList.ItemsSource = users;
+            //заполнение списка с фильтром по полу
+            lbGenderFilter.ItemsSource = BaseConnect.BaseModel.genders.ToList();
+            lbGenderFilter.SelectedValuePath = "id";
+            lbGenderFilter.DisplayMemberPath = "gender";
         }
 
         private void lbTraits_Loaded(object sender, RoutedEventArgs e)
@@ -37,19 +41,44 @@ namespace WpfApp4.pages
             lb.DisplayMemberPath = "traits.trait";//показываем пользователю текстовое описание качества
         }
 
-        private void btnGo_Click(object sender, RoutedEventArgs e)
+        private void Filter(object sender, RoutedEventArgs e)
         {
-            int OT = Convert.ToInt32(txtOT.Text)-1;//т.к. индексы начинаются с нуля
-            int DO = Convert.ToInt32(txtDO.Text);
-            List<users> lu1 = users.Skip(OT).Take(DO-OT).ToList();
-            //skip - пропустить определенное количество записей
-            //take - выбрать определенное количество записей
+            List<users> lu1=users;
+            //фильтр по количеству            
+            try
+            {
+                int OT = Convert.ToInt32(txtOT.Text) - 1;//т.к. индексы начинаются с нуля
+                int DO = Convert.ToInt32(txtDO.Text);
+                //skip - пропустить определенное количество записей
+                //take - выбрать определенное количество записей
+                lu1 = users.Skip(OT).Take(DO - OT).ToList();
+            }
+            catch
+            {
+                //ничего не надо делать, если этот фильтр не применен
+            }
+            //фильтр по полу
+            if(lbGenderFilter.SelectedValue!=null)//если пункт из списка не выбран, то сам фильтр работать не будет
+            {
+                lu1 = lu1.Where(x => x.gender == (int)lbGenderFilter.SelectedValue).ToList();
+            }
+
+            //фильтр по имени
+            if(txtNameFilter.Text!="")
+            {
+                lu1 = lu1.Where(x => x.name.Contains(txtNameFilter.Text)).ToList();
+            }
+
             lbUsersList.ItemsSource = lu1;
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
-            lbUsersList.ItemsSource = users;//в качестве источника данных новый список
+            lbUsersList.ItemsSource = users;//в качестве источника данных исходный список
+            lbGenderFilter.SelectedIndex = -1; //сбрасываем выбранный элемент списка
+            txtNameFilter.Text = "";//сбрасываем фильтр на строку
+            txtOT.Text = "";
+            txtDO.Text = "";
         }
     }
 }

@@ -32,7 +32,7 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="397*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0"  Orientation="Horizontal">
@@ -42,7 +42,15 @@
             <GroupBox Header="до">
                 <TextBox Name="txtDO" Width="50"/>
             </GroupBox>
-            <Button Name="btnGo" Content="Вывести" Click="btnGo_Click" Width="50" Margin="5"/>
+            <GroupBox Header="выберите пол">
+                <ComboBox x:Name="lbGenderFilter" SelectionChanged="Filter"/>
+            </GroupBox>
+            <GroupBox Header="часть имени">
+                <TextBox Name="txtNameFilter" TextChanged="Filter"/>
+            </GroupBox>
+            
+            
+            <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" Margin="5"/>
             <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
         </StackPanel>
         <ListBox Name="lbUsersList" ItemTemplate="{StaticResource DT1}" Grid.Row="1"/>
