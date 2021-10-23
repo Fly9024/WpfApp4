@@ -47,11 +47,22 @@
             </GroupBox>
             <GroupBox Header="часть имени">
                 <TextBox Name="txtNameFilter" TextChanged="Filter"/>
-            </GroupBox>
-            
-            
+            </GroupBox>          
             <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" Margin="5"/>
             <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
+            <GroupBox Header="сколько на странице">
+                <TextBox Name="txtPageCount" TextChanged="txtPageCount_TextChanged"/>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Name="txtPrev" Uid="prev" Text=" Пред. " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="txt1" Uid="1" Text=" 1 " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="txt2" Uid="2" Text=" 2 " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="txt3" Uid="3" Text=" 3 " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="txt4" Uid="4" Text=" 4 " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="txt5" Uid="5" Text=" 5 " MouseDown="GoPage_MouseDown"/>
+                <TextBlock Name="txtNext" Uid="next" Text=" След." MouseDown="GoPage_MouseDown"/>
+            </StackPanel>
+            <TextBlock Name="txtCurrentPage"/>
         </StackPanel>
         <ListBox Name="lbUsersList" ItemTemplate="{StaticResource DT1}" Grid.Row="1"/>
     </Grid>
