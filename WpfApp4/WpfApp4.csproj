@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="PageChange.cs" />
     <Compile Include="pages\adminMenu.xaml.cs">
       <DependentUpon>adminMenu.xaml</DependentUpon>
     </Compile>
