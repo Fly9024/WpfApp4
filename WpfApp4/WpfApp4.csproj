@@ -189,6 +189,9 @@
     <Resource Include="images\banners\banner1.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\female.jpg" />
+    <Resource Include="images\male.jpg" />
+    <Resource Include="images\other.jpg" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

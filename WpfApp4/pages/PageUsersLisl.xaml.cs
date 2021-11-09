@@ -74,11 +74,13 @@ namespace WpfApp4.pages
             }
 
             lbUsersList.ItemsSource = lu1;// возвращаем результат в виде списка, к которому применялись активные фильтры
+            pc.Countlist = lu1.Count;//меняем количество элементов в списке для постраничной навигации
         }
 
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             lbUsersList.ItemsSource = users;//в качестве источника данных исходный список
+            lu1 = users;
             lbGenderFilter.SelectedIndex = -1; //сбрасываем выбранный элемент списка
             txtNameFilter.Text = "";//сбрасываем фильтр на строку
             txtOT.Text = "";
@@ -104,8 +106,8 @@ namespace WpfApp4.pages
 
 
             //определение списка
-            lu1 = users.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
-            lbUsersList.ItemsSource = lu1;
+            lbUsersList.ItemsSource  = lu1.Skip(pc.CurrentPage * pc.CountPage - pc.CountPage).Take(pc.CountPage).ToList();
+            
             txtCurrentPage.Text = "Текущая страница: " + (pc.CurrentPage).ToString();
             
             
@@ -123,6 +125,31 @@ namespace WpfApp4.pages
             }
             pc.Countlist = users.Count;
             lbUsersList.ItemsSource = lu1.Skip(0).Take(pc.CountPage).ToList();
+        }
+
+        private void UserImage_Loaded(object sender, RoutedEventArgs e)
+        {
+            Image IMG = sender as Image;
+            int ind = Convert.ToInt32(IMG.Uid);
+            users U = BaseConnect.BaseModel.users.FirstOrDefault(x => x.id == ind);
+            BitmapImage BI;
+            //switch (U.gender)
+            //{
+            //    case 1:
+            //        BI = new BitmapImage(new Uri(@"images/male.jpg", UriKind.Relative));
+            //        break;
+            //    case 2:
+            //        BI = new BitmapImage(new Uri(@"images/female.jpg", UriKind.Relative));
+            //        break;
+            //    default:
+            //        BI = new BitmapImage(new Uri(@"images/other.jpg", UriKind.Relative));
+            //        break;
+            //}
+            BI = new BitmapImage();
+            BI.BeginInit();
+            BI.UriSource = new Uri(@"images/other.jpg", UriKind.Relative);
+            BI.EndInit();
+            IMG.Source = BI;//помещаем картинку в image
         }
     }
 }
