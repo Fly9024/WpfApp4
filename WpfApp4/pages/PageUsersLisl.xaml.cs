@@ -133,22 +133,19 @@ namespace WpfApp4.pages
             int ind = Convert.ToInt32(IMG.Uid);
             users U = BaseConnect.BaseModel.users.FirstOrDefault(x => x.id == ind);
             BitmapImage BI;
-            //switch (U.gender)
-            //{
-            //    case 1:
-            //        BI = new BitmapImage(new Uri(@"images/male.jpg", UriKind.Relative));
-            //        break;
-            //    case 2:
-            //        BI = new BitmapImage(new Uri(@"images/female.jpg", UriKind.Relative));
-            //        break;
-            //    default:
-            //        BI = new BitmapImage(new Uri(@"images/other.jpg", UriKind.Relative));
-            //        break;
-            //}
-            BI = new BitmapImage();
-            BI.BeginInit();
-            BI.UriSource = new Uri(@"images/other.jpg", UriKind.Relative);
-            BI.EndInit();
+            switch (U.gender)
+            {
+                case 1:
+                    BI = new BitmapImage(new Uri(@"/images/male.jpg", UriKind.Relative));
+                    break;
+                case 2:
+                    BI = new BitmapImage(new Uri(@"/images/female.jpg", UriKind.Relative));
+                    break;
+                default:
+                    BI = new BitmapImage(new Uri(@"/images/other.jpg", UriKind.Relative));
+                    break;
+            }
+
             IMG.Source = BI;//помещаем картинку в image
         }
     }
