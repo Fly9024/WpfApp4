@@ -53,6 +53,20 @@
             </GroupBox>          
             <Button Name="btnGo" Content="Вывести" Click="Filter" Width="50" Margin="5"/>
             <Button Name="btnReset" Content="Сброс" Click="btnReset_Click" Width="50" Margin="5"/>
+            <GroupBox Header="Сортировка">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <RadioButton Content ="по имени" Click="Sort_Click" Uid="name"/>
+                        <RadioButton Content ="по дате рождения" Click="Sort_Click" Uid="DR"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <RadioButton Content ="по возрастанию" Click="Sort_Click"/>
+                        <RadioButton x:Name="RBReverse" Content ="по убыванию" Click="Sort_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox> 
+            
+            
             <GroupBox Header="сколько на странице">
                 <TextBox Name="txtPageCount" TextChanged="txtPageCount_TextChanged"/>
             </GroupBox>

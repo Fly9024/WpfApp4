@@ -191,5 +191,20 @@ namespace WpfApp4.pages
                 MessageBox.Show("операция выбора изображения отменена");
             }
         }
+        private void Sort_Click(object sender, RoutedEventArgs e)
+        {
+            RadioButton RB = (RadioButton)sender;
+            switch (RB.Uid)
+            {
+                case "name":
+                    lu1 = lu1.OrderBy(x=> x.name).ToList();
+                    break;
+                case "DR":
+                    lu1 = lu1.OrderBy(x => x.dr).ToList();
+                    break;
+            }
+            if (RBReverse.IsChecked == true) lu1.Reverse();
+            lbUsersList.ItemsSource = lu1;
+        }
     }
 }
