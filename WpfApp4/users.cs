@@ -25,7 +25,7 @@ namespace WpfApp4
         public string name { get; set; }
         public System.DateTime dr { get; set; }
         public int gender { get; set; }
-    
+        
         public virtual auth auth { get; set; }
         public virtual genders genders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

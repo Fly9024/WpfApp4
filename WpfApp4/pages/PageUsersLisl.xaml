@@ -8,10 +8,18 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageUsersLisl">
     <Page.Resources>
+        <!--стиль с условным триггером-->
+        <Style TargetType="StackPanel" x:Key="SPstyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding TooOld}" Value="True">
+                    <Setter Property="Background" Value="Aqua"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
         <DataTemplate x:Key="DT1">
             <!--Шаблон для вывода информации о пользователе-->
-            <StackPanel>
-                <GroupBox Header="имя">
+            <StackPanel Style="{StaticResource SPstyle}" >
+                <GroupBox Header="имя" >
                     <TextBlock Text="{Binding name}"/>
                 </GroupBox>
                 <GroupBox Header=" дата рождения">

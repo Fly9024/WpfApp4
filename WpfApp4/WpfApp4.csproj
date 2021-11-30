@@ -99,6 +99,7 @@
     <Compile Include="usersimage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsersPartial.cs" />
     <Compile Include="users_to_traits.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
