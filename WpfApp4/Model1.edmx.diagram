@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="WPF_test_41PModel.roles" Width="1.5" PointX="0.75" PointY="3.75" />
         <EntityTypeShape EntityType="WPF_test_41PModel.traits" Width="1.5" PointX="5.25" PointY="0.75" />
         <EntityTypeShape EntityType="WPF_test_41PModel.users" Width="1.5" PointX="5.25" PointY="3.25" />
-        <EntityTypeShape EntityType="WPF_test_41PModel.users_to_traits" Width="1.5" PointX="7.5" PointY="3.5" />
+        <EntityTypeShape EntityType="WPF_test_41PModel.users_to_traits" Width="1.5" PointX="7.5" PointY="2.5" />
         <EntityTypeShape EntityType="WPF_test_41PModel.usersimage" Width="1.5" PointX="7.5" PointY="6.25" />
         <AssociationConnector Association="WPF_test_41PModel.FK_auth_roles" />
         <AssociationConnector Association="WPF_test_41PModel.FK_users_auth" />

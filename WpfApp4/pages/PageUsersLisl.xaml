@@ -28,7 +28,7 @@
                     <!--loaded - событие, которое происходит при создании элемента списка из шаблона-->
                 </GroupBox>
                 <!--Изображение пользователя-->
-                <Image x:Name="UserImage" Loaded="UserImage_Loaded" Uid="{Binding id}"/>
+                <Image x:Name="UserImage" Loaded="UserImage_Loaded" Uid="{Binding id}" MouseDown="UserImage_MouseDown"/>
                 <Button x:Name="BtmAddImage" Content="Загрузить/изменить изображение пользователя" Click="BtmAddImage_Click" Uid="{Binding id}"/>
             </StackPanel>
         </DataTemplate>

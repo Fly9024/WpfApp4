@@ -60,6 +60,7 @@
           <Property Name="id_user" Type="int" Nullable="false" />
           <Property Name="path" Type="nvarchar(max)" />
           <Property Name="image" Type="varbinary(max)" />
+          <Property Name="avatar" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_auth_roles">
           <End Role="roles" Type="Self.roles" Multiplicity="1" />
@@ -275,6 +276,7 @@
           <Property Name="id_user" Type="Int32" Nullable="false" />
           <Property Name="path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="avatar" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="users" Relationship="WPF_test_41PModel.FK_usersimage_users" FromRole="usersimage" ToRole="users" />
         </EntityType>
         <Association Name="FK_auth_roles">
@@ -417,6 +419,7 @@
           <EntitySetMapping Name="usersimage">
             <EntityTypeMapping TypeName="WPF_test_41PModel.usersimage">
               <MappingFragment StoreEntitySet="usersimage">
+                <ScalarProperty Name="avatar" ColumnName="avatar" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="path" ColumnName="path" />
                 <ScalarProperty Name="id_user" ColumnName="id_user" />

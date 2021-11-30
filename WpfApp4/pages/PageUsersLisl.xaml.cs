@@ -135,7 +135,7 @@ namespace WpfApp4.pages
             System.Windows.Controls.Image IMG = sender as System.Windows.Controls.Image;
             int ind = Convert.ToInt32(IMG.Uid);
             users U = BaseConnect.BaseModel.users.FirstOrDefault(x => x.id == ind);//запись о текущем пользователе
-            usersimage UI = BaseConnect.BaseModel.usersimage.FirstOrDefault(x => x.id_user == ind);//получаем запись о картинке для текущего пользователя
+            usersimage UI = BaseConnect.BaseModel.usersimage.FirstOrDefault(x => x.id_user == ind && x.avatar==true);//получаем запись о картинке для текущего пользователя
             BitmapImage BI=new BitmapImage();
             if (UI != null)//если для текущего пользователя существует запись о его катринке
             { 
@@ -181,7 +181,7 @@ namespace WpfApp4.pages
                 System.Drawing.Image UserImage = System.Drawing.Image.FromFile(openFileDialog.FileName);//создаем изображение
                 ImageConverter IC = new ImageConverter();//конвертер изображения в массив байт
                 byte[] ByteArr = (byte[])IC.ConvertTo(UserImage, typeof(byte[]));//непосредственно конвертация
-                usersimage UI = new usersimage() { id_user = ind, image = ByteArr };//создаем новый объект usersimage
+                usersimage UI = new usersimage() { id_user = ind, image = ByteArr, avatar=false };//создаем новый объект usersimage
                 BaseConnect.BaseModel.usersimage.Add(UI);//добавляем его в модель
                 BaseConnect.BaseModel.SaveChanges();//синхронизируем с базой
                 MessageBox.Show("картинка пользователя добавлена в базу");
@@ -205,6 +205,15 @@ namespace WpfApp4.pages
             }
             if (RBReverse.IsChecked == true) lu1.Reverse();
             lbUsersList.ItemsSource = lu1;
+            txtPageCount_TextChanged(null, null);//вызываем событие с текстбокса изменения количества записей на странице (для отрисовки)
+        }
+
+        private void UserImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Windows.Controls.Image im = (System.Windows.Controls.Image)sender;
+            int index = Convert.ToInt32(im.Uid);
+            Gallery G = new Gallery(index);
+            G.Show();
         }
     }
 }
