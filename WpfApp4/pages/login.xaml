@@ -17,6 +17,12 @@
                 <GroupBox Header="введите пароль">
                     <PasswordBox x:Name="txtPassword"/>
                 </GroupBox>
+				<GroupBox Header="введите код доступа">
+					<StackPanel Orientation="horizontal">
+					    <TextBox x:Name="txtKey" Width="100"/>
+						<Image x:Name="imgRefresh" IsEnabled="False" Source="/images/refresh.png" Width="20" Height="20" MouseDown="Image_MouseDown" ></Image>
+					</StackPanel>
+				</GroupBox>
                 <Button Content="Авторизоваться" Name="btnLogin" Click="btnLogin_Click" IsDefault="True"/>
                 <!--Свойство IsDefault активирует кнопку при нажатии enter, IsCancel - при нажатии Escape-->
                 <Button Content="Зарегистрироваться" Name="btnReg" Click="btnReg_Click"/>
