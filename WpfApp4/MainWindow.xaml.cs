@@ -23,7 +23,10 @@ namespace WpfApp4
         public MainWindow()
         {
             InitializeComponent();            
-            frmMain.Navigate(new login());
+            //frmMain.Navigate(new login());
+           frmMain.Navigate(new DiagramPage());
+           
+            
             LoadPages.MainFrame = frmMain;
             BaseConnect.BaseModel= new Entities();
         }
