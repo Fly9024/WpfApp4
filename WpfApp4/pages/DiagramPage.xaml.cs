@@ -24,10 +24,8 @@ namespace WpfApp4.pages
        
         public DiagramPage()
         {
-            InitializeComponent();
-           
-          //  MessageBox.Show(this.ActualHeight.ToString());
-          //  Diagram();
+            InitializeComponent();          
+          
         }
         private void Diagram()
         {
@@ -36,18 +34,23 @@ namespace WpfApp4.pages
 
         private void gridDiagram_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            double maxX = gridDiagram.ActualWidth;
+            double maxX = gridDiagram.ActualWidth;//получаем текущую ширину и высоту
             double maxY = gridDiagram.ActualHeight;
-            gridDiagram.Children.Clear();            
-            gridDiagram.Children.Add(line(maxX/20, maxY / 20, maxX / 20, maxY-maxY/20));
+            gridDiagram.Children.Clear();//очишаем графическое поле
+            gridDiagram.Children.Add(line(maxX/20, maxY / 20, maxX / 20, maxY-maxY/20));//помещаем созданный объект на grid
             gridDiagram.Children.Add(line(maxX / 20, maxY - maxY / 20, maxX-maxX / 20, maxY - maxY / 20));
-            int count = 20, step = (int)maxX / 40;
+            double count = 20, stepX = (maxX-maxX/10) / count,stepY = (maxY - maxY / 10) / count;
             for (int i = 0; i < count; i++)
             {
-                Line L = line(maxX / 20 + step * i, maxY - maxY / 20, maxX / 20 + step * i, maxY - maxY / 20-10*i);
+                Line L = line(maxX / 20 + stepX * i, maxY - maxY / 20, maxX / 20 + stepX * i, maxY - maxY / 20-stepY*i);
                 L.Stroke = Brushes.Aqua;
-                L.StrokeThickness = 5;
+                L.StrokeThickness = maxX/100;
                 gridDiagram.Children.Add(L);
+                TextBlock TB = new TextBlock();
+                TB.Width = maxX / 20 + stepX * i;
+                TB.Height = maxY - maxY / 20 - stepY * i;
+                TB.Text = (maxY - maxY / 20 - stepY * i).ToString();
+                gridDiagram.Children.Add(TB);
                 //gridDiagram.Children.Add(polygon(maxX / 20 * i, (maxY - maxY / 20) * i, maxX / 20 * i + maxX / 40, maxY / 20));
             }         
         }

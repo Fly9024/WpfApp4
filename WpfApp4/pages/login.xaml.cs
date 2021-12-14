@@ -76,12 +76,12 @@ namespace WpfApp4.pages
         {
             LoadPages.MainFrame.Navigate(new reg());
         }
-
+        Random random = new Random();
         private void generateKey()
         {
             imgRefresh.IsEnabled= false;            
             kode = "";           
-            Random random = new Random();
+            
             for (int i = 0; i < 8; i++)
             {
                 kode += ((char)random.Next(33,122)).ToString();
@@ -96,7 +96,7 @@ namespace WpfApp4.pages
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
             imgRefresh.IsEnabled = true;
-            kode = "";            
+            kode = ((char)random.Next(33, 122)).ToString();            
            // MessageBox.Show("время вышло");
         }
 
